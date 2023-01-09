@@ -1,4 +1,5 @@
 /* global google */
+import { TextInput } from '@mantine/core';
 import React, { useState } from 'react';
 import {
   GoogleMap, withGoogleMap, Polygon
@@ -13,31 +14,25 @@ const googleMapURL = `https://maps.googleapis.com/maps/api/js?libraries=geometry
 
 function SavePolygonsMap() {
   const [polygons, setPolygons] = useState([]);
-  const [nextId, setNextId] = useState(1);
+  let nextId = 1;
   const [search, setSearch] = useState('');
   const [selectedPlace, setSelectedPlace] = useState({
-    // CN Tower default
-    lat: 43.642558,
-    lng: -79.387046
+    lat: 36,
+    lng: -119
   });
 
   const onPolygonComplete = (polygon) => {
-    // Get the coordinates of the polygon
-    // const coordinates = polygon.getPath().getArray().map((latLng) => (
-    //  { lat: latLng.lat(), lng: latLng.lng() }
-    // ));
-
-    // Save the coordinates to your MongoDB database
-    // savePolygonToDatabase(coordinates);
-
-    // Add the polygon to the state
-    // const id = savePolygonToDatabase(coordinates);
     const id = nextId;
 
-    // Add the polygon to the state
-    console.log(polygon);
+    polygon.setPath(
+      polygon.getPath().getArray().map((latLng) => ({
+        lat: latLng.lat(),
+        lng: latLng.lng()
+      }))
+    );
+
     setPolygons([...polygons, { id, polygon }]);
-    setNextId(nextId + 1);
+    nextId += 1;
   };
 
   const onSearchChange = (value) => {
@@ -48,9 +43,55 @@ function SavePolygonsMap() {
 
   const searchLocation = async () => {
     const response = await request(() => locationRequest(search));
-    const { data } = response;
-    console.log(data.results);
-    setSelectedPlace(data.results[0].geometry.location);
+    const { position, polygonCords } = response.data;
+
+    setSelectedPlace(position.results[0].geometry.location);
+
+    const polygonCord = polygonCords[0];
+    if (polygonCord.geojson.type === 'Polygon') {
+      polygonCord.geojson.coordinates.forEach((polycordmini) => {
+        const id = nextId;
+        const polygon = new google.maps.Polygon({
+          strokeColor: '#FF0000',
+          strokeOpacity: 0.8,
+          strokeWeight: 3,
+          fillColor: '#FF0000',
+          fillOpacity: 0.35
+        });
+        polygon.setPath(
+          polycordmini.map((cord) => ({
+            lat: cord[1],
+            lng: cord[0]
+          }))
+        );
+        polygon.setVisible(true);
+        setPolygons((prev) => [...prev, { id, polygon }]);
+        nextId += 1;
+      });
+    } else if (polygonCord.geojson.type === 'MultiPolygon') {
+      polygonCord.geojson.coordinates.forEach((polycordmini) => {
+        polycordmini.forEach((cord) => {
+          const id = nextId;
+          const polygon = new google.maps.Polygon({
+            strokeColor: '#FF0000',
+            strokeOpacity: 0.8,
+            strokeWeight: 3,
+            fillColor: '#FF0000',
+            fillOpacity: 0.35
+          });
+          polygon.setPath(
+            cord.map((c) => ({
+              lat: c[1],
+              lng: c[0]
+            }))
+          );
+          polygon.setVisible(true);
+          setPolygons((prev) => [...prev, { id, polygon }]);
+
+          nextId += 1;
+        });
+      });
+    }
   };
 
   const onSelectPlace = (place) => {
@@ -66,7 +107,8 @@ function SavePolygonsMap() {
       >
         {({ getInputProps, suggestions, getSuggestionItemProps }) => (
           <>
-            <input
+            <TextInput
+              my={2}
               {...getInputProps({
                 placeholder: 'Search for a place ...',
                 className: 'location-search-input'
@@ -98,7 +140,7 @@ function SavePolygonsMap() {
         )}
       </PlacesAutocomplete>
       <GoogleMap
-        defaultZoom={8}
+        defaultZoom={5}
         defaultCenter={{ lat: -34.397, lng: 150.644 }}
         center={selectedPlace ? {
           lat: selectedPlace.lat, lng: selectedPlace.lng
