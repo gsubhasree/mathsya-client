@@ -3,7 +3,9 @@ import {
   LOGIN_URL,
   REGISTER_URL,
   LOGOUT_URL,
-  USER_URL
+  USER_URL,
+  LOCATION_SEARCH_URL,
+  CLIMATE_URL
 } from './urls';
 
 // withCredentials
@@ -37,3 +39,11 @@ export const registerRequest = ({
 export const logoutRequest = () => axios.get(LOGOUT_URL, withCredentials);
 
 export const userRequest = () => axios.get(USER_URL, withCredentials);
+
+export const locationRequest = (search) => axios.post(LOCATION_SEARCH_URL, {
+  search
+}, withCredentials);
+
+export const climateRequest = (location) => axios.post(CLIMATE_URL, {
+  location
+}, withCredentials);
