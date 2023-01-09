@@ -24,8 +24,8 @@ const useStyles = createStyles((theme) => ({
 
 const FAQ = [
   {
-    question: 'What is MATHYSA?',
-    answer: 'MATHYSA is Document Management System (DMS) that allows you to manage forms and documents paperlessly.',
+    question: 'What is Mathsya?',
+    answer: 'Mathsya is Document Management System (DMS) that allows you to manage forms and documents paperlessly.',
     value: 'what'
   },
   {

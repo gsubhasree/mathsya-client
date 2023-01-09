@@ -60,7 +60,7 @@ export function Homepage() {
       </Title>
 
       <p>
-        Mathysa is a decentralised form storage which helps to transition
+        Mathsya is a decentralised form storage which helps to transition
         {' '}
         from paper forms into the digital world!
       </p>

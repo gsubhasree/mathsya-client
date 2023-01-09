@@ -90,7 +90,7 @@ export function TopLanding() {
               for managing documents
             </Title>
             <Text color="dimmed" mt="md">
-              Mathysa is an efficient modern solution build using endesive,
+              Mathsya is an efficient modern solution build using endesive,
               hyperledger blockchain technologies that is used to transact documents in
               a particular workflow and create new documents.
             </Text>

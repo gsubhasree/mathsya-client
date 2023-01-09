@@ -5,7 +5,13 @@ import {
   LOGOUT_URL,
   USER_URL,
   LOCATION_SEARCH_URL,
-  CLIMATE_URL
+  CLIMATE_URL,
+  PRODUCTS_URL,
+  GET_ALL_OWNED_PRODUCTS_URL,
+  GET_ALL_PRODUCTS_URL_IN_HISTORY,
+  AUCTIONS_URL,
+  BID_URL,
+  SELL_PRODUCT_URL
 } from './urls';
 
 // withCredentials
@@ -47,3 +53,55 @@ export const locationRequest = (search) => axios.post(LOCATION_SEARCH_URL, {
 export const climateRequest = (location) => axios.post(CLIMATE_URL, {
   location
 }, withCredentials);
+// products requests
+export const createProduct = ({
+  name, location, cost, quantity
+}) => axios.post(
+  PRODUCTS_URL,
+  {
+    name,
+    location,
+    cost,
+    quantity
+  },
+  withCredentials
+);
+
+export const getAllOwnedProducts = () => axios.get(GET_ALL_OWNED_PRODUCTS_URL, withCredentials);
+
+export const getAllProductsInHistory = () => axios.get(
+  GET_ALL_PRODUCTS_URL_IN_HISTORY,
+  withCredentials
+);
+
+export const getProductRequest = (id) => axios.get(`${PRODUCTS_URL}/${id}`, withCredentials);
+
+export const sellProduct = ({ id, location, cost }) => axios.post(
+  `${SELL_PRODUCT_URL}/${id}`,
+  {
+    location,
+    cost
+  },
+  withCredentials
+);
+
+// Auctions requests
+export const getAllProductsInAuction = () => axios.get(AUCTIONS_URL, withCredentials);
+export const bidInAuction = ({ id, bidAmount, location }) => axios.post(
+  `${BID_URL}/${id}`,
+  {
+    bidAmount,
+    location
+  },
+  withCredentials
+);
+
+export const createAuction = ({ id, minPrice }) => axios.post(
+  `${AUCTIONS_URL}/${id}`,
+  {
+    minPrice
+  },
+  withCredentials
+);
+
+export const closeAuction = (id) => axios.post(`${AUCTIONS_URL}/close/${id}`, withCredentials);

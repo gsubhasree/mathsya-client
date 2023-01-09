@@ -1,11 +1,11 @@
 {
-  "short_name": "Mathysa",
-  "name": "Mathysa",
+  "short_name": "Mathsya",
+  "name": "Mathsya",
   "icons": [
     {
       "src": "logo.png",
       "type": "image/png",
-      "sizes": "192x192"
+      "sizes": "103x67"
     }
   ],
   "start_url": ".",

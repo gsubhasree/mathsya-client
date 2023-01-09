@@ -139,7 +139,7 @@ export function HeaderNav({ opened: open, setOpened }) {
       <Container className={classes.header}>
         <UnstyledButton className={classes.flexer} onClick={() => navigate('/')}>
           <Image src={colorScheme === 'dark' ? logoDark : logoLight} style={{ width: 48 }} />
-          <Title order={4} ml={20}>Mathysa</Title>
+          <Title order={4} ml={20}>Mathsya</Title>
         </UnstyledButton>
         <Group spacing={5} className={classes.links}>
           {items}

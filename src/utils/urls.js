@@ -9,3 +9,13 @@ export const LOGOUT_URL = `${BACKEND_URL}/auth/logout`;
 export const USER_URL = `${BACKEND_URL}/auth/user`;
 export const LOCATION_SEARCH_URL = `${BACKEND_URL}/globalfence/search`;
 export const CLIMATE_URL = `${BACKEND_URL}/climate/getClimate`;
+
+// Products
+export const PRODUCTS_URL = `${BACKEND_URL}/product`;
+export const GET_ALL_OWNED_PRODUCTS_URL = `${PRODUCTS_URL}/owned`;
+export const GET_ALL_PRODUCTS_URL_IN_HISTORY = `${PRODUCTS_URL}/history`;
+export const SELL_PRODUCT_URL = `${PRODUCTS_URL}/sell`;
+
+// Auctions
+export const AUCTIONS_URL = `${BACKEND_URL}/auction`;
+export const BID_URL = `${AUCTIONS_URL}/bid`;

@@ -7,7 +7,11 @@ import { LandingPageContainer } from '../containers/LandingPageContainer';
 import { Homepage } from '../components/Home';
 import { App } from '../components/Geofence';
 import GlobalfencePage from '../components/Globalfence';
-import ClimatePage from '../components/Climate';
+import { CreateProduct } from '../components/Product/CreateProduct';
+import { DisplayProducts } from '../components/Product/DisplayProducts';
+import { ShowProduct } from '../components/Product/ShowProduct';
+
+import { getAllOwnedProducts, getAllProductsInAuction, getAllProductsInHistory } from '../utils/requests';
 
 export const publicRoutes = [
   {
@@ -42,9 +46,33 @@ export const privateRoutes = [
     label: 'globalfence'
   },
   {
-    url: '/climate',
-    component: <GeneralPageContainer child={<ClimatePage />} />,
-    name: 'ClimateContainer',
-    label: 'climate'
+    url: '/create-new-product',
+    component: <GeneralPageContainer child={<CreateProduct />} />,
+    name: 'CreateProductPageContainer',
+    label: 'create-new-product'
+  },
+  {
+    url: '/products-owned',
+    component: <GeneralPageContainer child={<DisplayProducts name="products-owned" fetchRequest={getAllOwnedProducts} />} />,
+    name: 'ProductsOwnedPageContainer',
+    label: 'products-owned'
+  },
+  {
+    url: '/historical-products',
+    component: <GeneralPageContainer child={<DisplayProducts name="historical-products" fetchRequest={getAllProductsInHistory} />} />,
+    name: 'HistoricalProductsPageContainer',
+    label: 'historical-products'
+  },
+  {
+    url: '/products-in-auction',
+    component: <GeneralPageContainer child={<DisplayProducts name="products-in-auction" fetchRequest={getAllProductsInAuction} />} />,
+    name: 'ProductsInAuctionPageContainer',
+    label: 'products-in-auction'
+  },
+  {
+    url: '/show-product/:id',
+    component: <GeneralPageContainer child={<ShowProduct />} />,
+    name: 'ShowProductPageContainer',
+    label: 'show-product'
   }
 ];
