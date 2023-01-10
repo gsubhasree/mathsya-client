@@ -6,12 +6,14 @@ import {
   USER_URL,
   LOCATION_SEARCH_URL,
   CLIMATE_URL,
+  CLIMATE_WITH_COORDINATES_URL,
   PRODUCTS_URL,
   GET_ALL_OWNED_PRODUCTS_URL,
   GET_ALL_PRODUCTS_URL_IN_HISTORY,
   AUCTIONS_URL,
   BID_URL,
-  SELL_PRODUCT_URL
+  SELL_PRODUCT_URL,
+  PREDICT_FISH_URL
 } from './urls';
 
 // withCredentials
@@ -46,6 +48,7 @@ export const logoutRequest = () => axios.get(LOGOUT_URL, withCredentials);
 
 export const userRequest = () => axios.get(USER_URL, withCredentials);
 
+// location requests
 export const locationRequest = (search) => axios.post(LOCATION_SEARCH_URL, {
   search
 }, withCredentials);
@@ -53,6 +56,13 @@ export const locationRequest = (search) => axios.post(LOCATION_SEARCH_URL, {
 export const climateRequest = (location) => axios.post(CLIMATE_URL, {
   location
 }, withCredentials);
+
+export const climateWithCoordinateRequest = (
+  coordinates
+) => axios.post(CLIMATE_WITH_COORDINATES_URL, {
+  coordinates
+}, withCredentials);
+
 // products requests
 export const createProduct = ({
   name, location, cost, quantity
@@ -105,3 +115,7 @@ export const createAuction = ({ id, minPrice }) => axios.post(
 );
 
 export const closeAuction = (id) => axios.post(`${AUCTIONS_URL}/close/${id}`, withCredentials);
+
+export const predictFishRequest = (formValues) => axios.post(PREDICT_FISH_URL, {
+  formValues
+}, withCredentials);
