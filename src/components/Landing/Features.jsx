@@ -8,22 +8,34 @@ import {
   createStyles
 } from '@mantine/core';
 import {
-  IconWorld, IconFriends, IconUser, IconPlant, IconLock, IconCertificate
+  IconWorld, IconFriends, IconFish, IconMapPin, IconLock, IconCloudRain
 } from '@tabler/icons';
 import PropTypes from 'prop-types';
 
 export const FEATURES = [
   {
     icon: IconWorld,
-    title: 'Completely digital',
+    title: 'Improved supply chain management',
     description:
-        'Digital infrastructure for a robust and smart Document Management System (DMS) that will make ICCR paperless.'
+        'Tracks and manage their supply chains more efficiently, potentially reducing the risk of fraud or errors.'
   },
   {
-    icon: IconUser,
-    title: 'Accountable & Fast',
+    icon: IconCloudRain,
+    title: 'Climate updates',
     description:
-        'Reduce intermediaries in the approval process thereby reducing complexity in workflow & improving speed.'
+      'Sends information about important weather and climate information, which can help to plan fishing activities and stay safe on the water.'
+  },
+  {
+    icon: IconMapPin,
+    title: 'Geofencing',
+    description:
+        'Helps fishermen ensure that they are complying with coastal limits and other regulations.'
+  },
+  {
+    icon: IconFish,
+    title: 'Predict Fish variety',
+    description:
+        'Helps to find the variety of fish with physical properties by using Machine Learning Algorithms.'
   },
   {
     icon: IconFriends,
@@ -36,18 +48,6 @@ export const FEATURES = [
     title: 'Secure by default',
     description:
         'Hyperledger enables clients to record, share and synchronize transactions of files in their respective electronic ledgers.'
-  },
-  {
-    icon: IconCertificate,
-    title: 'Digital Signatures',
-    description:
-      'Digital signature of the document enables the user to verify the signature in the document'
-  },
-  {
-    icon: IconPlant,
-    title: 'Reduce Carbon Footprint',
-    description:
-        'Drastically minimize paper consumption in the long run by transitioning from paper to digital.'
   }
 ];
 

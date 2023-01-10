@@ -25,18 +25,13 @@ const useStyles = createStyles((theme) => ({
 const FAQ = [
   {
     question: 'What is Mathsya?',
-    answer: 'Mathsya is Document Management System (DMS) that allows you to manage forms and documents paperlessly.',
+    answer: 'Mathsya is a decentralized application to monitor, secure and help fishermen.',
     value: 'what'
   },
   {
     question: 'How do I get started?',
     answer: 'You can sign up for an account and fill your required form. Once your entries have been verified by the administrator, you can download the digitally signed document.',
     value: 'how'
-  },
-  {
-    question: 'What is ICCR?',
-    answer: 'The Indian Council for Cultural Relations is an organization involved in India\'s global cultural relations, through cultural exchange with other countries and their people.',
-    value: 'difference'
   }
 
 ];

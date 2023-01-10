@@ -1,37 +1,37 @@
 /* global google */
 import { TextInput } from '@mantine/core';
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import {
   GoogleMap, withGoogleMap, Polygon
 } from 'react-google-maps';
 import withScriptjs from 'react-google-maps/lib/async/withScriptjs';
 import DrawingManager from 'react-google-maps/lib/drawing/DrawingManager';
 import PlacesAutocomplete from 'react-places-autocomplete';
-import { socket } from '../../socket';
+// import { socket } from '../../socket';
 import { useLoading } from '../../hooks/useLoading';
 import { locationRequest } from '../../utils/requests';
 
 const googleMapURL = `https://maps.googleapis.com/maps/api/js?libraries=geometry,drawing,places&key=${process.env.REACT_APP_MAPS_API_KEY}`;
 
 function SavePolygonsMap() {
-  useEffect(() => {
-    console.log('here');
-    socket.on('connect', () => {
-      console.log('connected to server');
-    });
-    socket.on('disconnect', () => {
-      console.log('disconnected from server');
-    });
-    socket.on('event', (data) => {
-      console.log(`received custom event: ${data}`);
-    });
+  // useEffect(() => {
+  //   console.log('here');
+  //   socket.on('connect', () => {
+  //     console.log('connected to server');
+  //   });
+  //   socket.on('disconnect', () => {
+  //     console.log('disconnected from server');
+  //   });
+  //   socket.on('event', (data) => {
+  //     console.log(`received custom event: ${data}`);
+  //   });
 
-    return () => {
-      socket.off('connect');
-      socket.off('disconnect');
-      socket.off('custom event');
-    };
-  }, []);
+  //   return () => {
+  //     socket.off('connect');
+  //     socket.off('disconnect');
+  //     socket.off('custom event');
+  //   };
+  // }, []);
   const [polygons, setPolygons] = useState([]);
   let nextId = 1;
   const [search, setSearch] = useState('');

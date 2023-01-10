@@ -55,14 +55,20 @@ const useStyles = createStyles((theme) => ({
 
   highlight: {
     position: 'relative',
-    backgroundColor: theme.fn.variant({ variant: 'light', color: theme.primaryColor }).background,
+    backgroundColor: theme.fn.variant({
+      variant: 'light',
+      color: theme.primaryColor
+    }).background,
     borderRadius: theme.radius.sm,
     padding: '4px 12px'
   },
 
   dots: {
     position: 'absolute',
-    color: theme.colorScheme === 'dark' ? theme.colors.dark[5] : theme.colors.gray[1],
+    color:
+      theme.colorScheme === 'dark'
+        ? theme.colors.dark[5]
+        : theme.colors.gray[1],
 
     '@media (max-width: 755px)': {
       display: 'none'
@@ -87,16 +93,26 @@ export function TopLanding() {
               {' '}
               <br />
               {' '}
-              for managing documents
+              for all needs of fishermen
             </Title>
             <Text color="dimmed" mt="md">
-              Mathsya is an efficient modern solution build using endesive,
-              hyperledger blockchain technologies that is used to transact documents in
-              a particular workflow and create new documents.
+              Mathsya is an application designed to help fishermen secure and
+              govern their supply chains using blockchain technology and
+              geofencing. It also provides climate updates, predicting fish
+              varieties and other important information in multiple languages,
+              with support for multiple devices. Mathsya aims to improve the
+              efficiency and security of the fishing industry by providing
+              fishermen with tools and resources to better manage their supply
+              chains and stay informed about relevant information.
             </Text>
 
             <Group mt={30}>
-              <Button radius="xl" size="md" className={classes.control} onClick={() => navigate('/auth')}>
+              <Button
+                radius="xl"
+                size="md"
+                className={classes.control}
+                onClick={() => navigate('/auth')}
+              >
                 Login to get started
               </Button>
             </Group>
@@ -107,7 +123,6 @@ export function TopLanding() {
               loop
               mode="normal"
               src="https://assets9.lottiefiles.com/packages/lf20_wZfLZTnsGl.json"
-
             />
           </div>
         </div>

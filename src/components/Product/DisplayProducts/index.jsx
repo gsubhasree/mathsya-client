@@ -117,7 +117,7 @@ export function DisplayProducts({
       !isLoading && (
         <Container my={50}>
           <Group position="center">
-            <Title order={4}>{t('No Docs Available')}</Title>
+            <Title order={4}>{t('no-docs-available')}</Title>
           </Group>
         </Container>
       )

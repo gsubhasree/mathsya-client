@@ -32,8 +32,7 @@ export function Auth() {
     initialValues: {
       email: '',
       name: '',
-      password: '',
-      terms: true
+      password: ''
     },
 
     validate: {
