@@ -12,6 +12,8 @@ import { DisplayProducts } from '../components/Product/DisplayProducts';
 import { ShowProduct } from '../components/Product/ShowProduct';
 
 import { getAllOwnedProducts, getAllProductsInAuction, getAllProductsInHistory } from '../utils/requests';
+import ClimatePage from '../components/Climate';
+import PredictFishPage from '../components/PredictFish';
 
 export const publicRoutes = [
   {
@@ -74,5 +76,16 @@ export const privateRoutes = [
     component: <GeneralPageContainer child={<ShowProduct />} />,
     name: 'ShowProductPageContainer',
     label: 'show-product'
+  }, {
+    url: '/climate',
+    component: <GeneralPageContainer child={<ClimatePage />} />,
+    name: 'ClimateContainer',
+    label: 'climate'
+  },
+  {
+    url: '/predictFish',
+    component: <GeneralPageContainer child={<PredictFishPage />} />,
+    name: 'PredictFishContainer',
+    label: 'predictFish'
   }
 ];
