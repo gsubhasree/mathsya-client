@@ -7,6 +7,7 @@ import { LandingPageContainer } from '../containers/LandingPageContainer';
 import { Homepage } from '../components/Home';
 import { App } from '../components/Geofence';
 import GlobalfencePage from '../components/Globalfence';
+import KafkaPOC from '../components/KafkaPOC';
 import { CreateProduct } from '../components/Product/CreateProduct';
 import { DisplayProducts } from '../components/Product/DisplayProducts';
 import { ShowProduct } from '../components/Product/ShowProduct';
@@ -46,6 +47,12 @@ export const privateRoutes = [
     component: <GeneralPageContainer child={<GlobalfencePage />} />,
     name: 'GlobalfenceContainer',
     label: 'globalfence'
+  },
+  {
+    url: '/kafkaPOC',
+    component: <GeneralPageContainer child={<KafkaPOC />} />,
+    name: 'KafkaPOCContainer',
+    label: 'kafkaPOC'
   },
   {
     url: '/create-new-product',

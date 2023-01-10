@@ -1,5 +1,5 @@
 /* global google */
-import { TextInput } from '@mantine/core';
+import { Center, TextInput } from '@mantine/core';
 import React, { useState } from 'react';
 import {
   GoogleMap, withGoogleMap, Polygon
@@ -7,31 +7,12 @@ import {
 import withScriptjs from 'react-google-maps/lib/async/withScriptjs';
 import DrawingManager from 'react-google-maps/lib/drawing/DrawingManager';
 import PlacesAutocomplete from 'react-places-autocomplete';
-// import { socket } from '../../socket';
 import { useLoading } from '../../hooks/useLoading';
 import { locationRequest } from '../../utils/requests';
 
 const googleMapURL = `https://maps.googleapis.com/maps/api/js?libraries=geometry,drawing,places&key=${process.env.REACT_APP_MAPS_API_KEY}`;
 
 function SavePolygonsMap() {
-  // useEffect(() => {
-  //   console.log('here');
-  //   socket.on('connect', () => {
-  //     console.log('connected to server');
-  //   });
-  //   socket.on('disconnect', () => {
-  //     console.log('disconnected from server');
-  //   });
-  //   socket.on('event', (data) => {
-  //     console.log(`received custom event: ${data}`);
-  //   });
-
-  //   return () => {
-  //     socket.off('connect');
-  //     socket.off('disconnect');
-  //     socket.off('custom event');
-  //   };
-  // }, []);
   const [polygons, setPolygons] = useState([]);
   let nextId = 1;
   const [search, setSearch] = useState('');
@@ -140,8 +121,12 @@ function SavePolygonsMap() {
                   : 'suggestion-item';
                 // inline style for demonstration purpose
                 const style = suggestion.active
-                  ? { backgroundColor: '#fafafa', cursor: 'pointer' }
-                  : { backgroundColor: '#ffffff', cursor: 'pointer' };
+                  ? {
+                    backgroundColor: '#fafafa', cursor: 'pointer', padding: '5px', border: 'solid 0.5px black'
+                  }
+                  : {
+                    backgroundColor: '#ffffff', cursor: 'pointer', padding: '5px', border: 'solid 0.5px black'
+                  };
                 return (
                   <div
                     key={suggestion.id}
@@ -192,13 +177,15 @@ const MapWrapped = withScriptjs(withGoogleMap(SavePolygonsMap));
 
 export default function GlobalfencePage() {
   return (
-    <div style={{ width: '100%', height: '500px' }}>
-      <MapWrapped
-        googleMapURL={googleMapURL}
-        loadingElement={<div style={{ height: '100%' }} />}
-        containerElement={<div style={{ height: '100%' }} />}
-        mapElement={<div style={{ height: '100%' }} />}
-      />
-    </div>
+    <Center>
+      <div style={{ width: '80%', height: '400px' }}>
+        <MapWrapped
+          googleMapURL={googleMapURL}
+          loadingElement={<div style={{ height: '100%' }} />}
+          containerElement={<div style={{ height: '100%' }} />}
+          mapElement={<div style={{ height: '100%' }} />}
+        />
+      </div>
+    </Center>
   );
 }

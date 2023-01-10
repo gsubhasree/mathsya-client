@@ -80,7 +80,7 @@ export function Auth() {
         showNotification({
           color: 'red',
           title: 'Registration failed',
-          message: error.response.data
+          message: error.response && error.response.data
           && error.response.data.message ? error.response.data.message : error.message
         });
       }

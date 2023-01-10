@@ -7,11 +7,11 @@ import {
   IconBuildingFactory2,
   IconHistoryToggle,
   IconTags,
-  IconFence
+  IconFence,
   // IconForms,
   // IconFileReport,
   // IconFileUpload,
-  // IconJumpRope,
+  IconJumpRope
   // IconAdjustments,
   // IconDevicesPc
 } from '@tabler/icons';
@@ -20,6 +20,7 @@ export const navLinks = [
   { link: '/home', label: 'home', icon: IconHome },
   { link: '/geofence', label: 'geofence', icon: IconFence },
   { link: '/globalfence', label: 'globalfence', icon: IconMapPin },
+  { link: '/kafkaPOC', label: 'kafkaPOC', icon: IconJumpRope },
   { link: '/climate', label: 'climate', icon: IconCloudRain },
   { link: '/create-new-product', label: 'create-new-product', icon: IconSquarePlus },
   { link: '/products-owned', label: 'products-owned', icon: IconBuildingFactory2 },
