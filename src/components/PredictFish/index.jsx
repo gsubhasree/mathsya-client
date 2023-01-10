@@ -45,7 +45,8 @@ export default function PredictFishPage() {
       length2: '',
       length3: '',
       width: '',
-      height: ''
+      height: '',
+      model_choise: ''
     },
 
     validate: {
@@ -61,13 +62,13 @@ export default function PredictFishPage() {
   const submit = async () => {
     try {
       const response = await request(() => predictFishRequest(form.values));
-      if (response.status === 201) {
-        form.reset();
+      if (response.status === 200) {
+        // form.reset();
         showNotification({
           color: 'green',
           type: 'success',
           title: 'Predicted fish successfully',
-          message: response.message
+          message: response.data.prediction
         });
       } else {
         showNotification({
@@ -111,6 +112,7 @@ export default function PredictFishPage() {
             { value: 'SVM', label: 'SVM' },
             { value: 'RandomForest', label: 'Random Forest' }
           ]}
+          {...form.getInputProps('model_choise')}
         />
         <br />
         <Center>

@@ -157,7 +157,7 @@ const MapWrapped = withScriptjs(withGoogleMap(SavePolygonsMap));
 
 export default function GlobalfencePage() {
   return (
-    <div style={{ width: '100%', height: '500px' }}>
+    <div style={{ width: '80%', height: '500px' }}>
       <MapWrapped
         googleMapURL={googleMapURL}
         loadingElement={<div style={{ height: '100%' }} />}

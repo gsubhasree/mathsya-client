@@ -92,7 +92,7 @@ export function DisplayProducts({
               className={classes.item}
               onClick={() => navigate(`/show-product/${item.id}`)}
             >
-              <Container py={20}>
+              <Container py={10}>
                 <Text
                   c="teal"
                   size="lg"
